@@ -1,10 +1,10 @@
 package se.pricer;
 
-import se.pricer.foodmenu.model.BreakfastMenu;
+import se.pricer.foodmenu.model.PricerMenu;
 
 /**
  * Created by peter on 2017-02-03.
  */
 public interface MenuParser {
-    BreakfastMenu parse(String fileContents);
+    PricerMenu parse(String fileContents);
 }

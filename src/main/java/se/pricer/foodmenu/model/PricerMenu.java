@@ -1,6 +1,5 @@
 package se.pricer.foodmenu.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.List;
@@ -9,16 +8,16 @@ import java.util.List;
  * Created by peter on 2017-02-03.
  */
 @JsonRootName(value = "breakfast_menu")
-public class BreakfastMenu {
-    public List<Food> getFood() {
+public class PricerMenu {
+    public List<PricerFood> getFood() {
         return food;
     }
 
-    public void setFood(List<Food> food) {
+    public void setFood(List<PricerFood> food) {
         this.food = food;
     }
 
-    private List<Food> food;
+    private List<PricerFood> food;
 
 
 }
