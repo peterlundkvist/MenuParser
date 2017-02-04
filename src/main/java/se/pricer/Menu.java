@@ -1,7 +1,9 @@
 package se.pricer;
 
 import org.apache.commons.io.FileUtils;
+import se.pricer.foodmenu.model.PricerFood;
 import se.pricer.foodmenu.model.PricerMenu;
+import se.pricer.foodmenu.model.jaxb.BreakfastMenu;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +23,11 @@ public class Menu {
     public void readFile(String fileName, String sortOrder) throws IOException {
         MenuParser parser = getSuitableParser(fileName);
         String fileContents = FileUtils.readFileToString(new File(fileName));
-        System.out.println("PricerFood menu:");
         PricerMenu menu = parser.parse(fileContents);
 
-
+        for(PricerFood pf : menu.getFood()) {
+            System.out.println(pf);
+        }
     }
 
     private  MenuParser getSuitableParser(String fileName) {

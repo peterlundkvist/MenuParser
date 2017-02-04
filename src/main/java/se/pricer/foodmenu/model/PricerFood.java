@@ -8,4 +8,14 @@ public class PricerFood {
     public String price;
     public String description;
     public int calories;
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("[Food]\n");
+        sb.append("    Name: ").append(name).append('\n');
+        sb.append("    Price: ").append(price).append('\n');
+        sb.append("    Description: ").append(description).append('\n');
+        sb.append("    Calories: ").append(calories);
+        return sb.toString();
+    }
 }
