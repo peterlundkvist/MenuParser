@@ -3,7 +3,7 @@ package se.pricer.foodmenu.model;
 /**
  * Created by peter on 2017-02-03.
  */
-public class PricerFood {
+public class PricerFood implements Comparable {
     public String name;
     public String price;
     public String description;
@@ -17,5 +17,11 @@ public class PricerFood {
         sb.append("    Description: ").append(description).append('\n');
         sb.append("    Calories: ").append(calories);
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        PricerFood pf = (PricerFood) o;
+        return this.name.compareTo(pf.name);
     }
 }
