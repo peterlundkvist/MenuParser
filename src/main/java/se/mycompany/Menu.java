@@ -1,8 +1,8 @@
-package se.pricer;
+package se.mycompany;
 
 import org.apache.commons.io.FileUtils;
-import se.pricer.foodmenu.model.PricerFood;
-import se.pricer.foodmenu.model.PricerMenu;
+import se.mycompany.foodmenu.model.MyFood;
+import se.mycompany.foodmenu.model.MyMenu;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Menu {
         if(args == null || args.length != 2) {
             throw new IllegalArgumentException("Please specify these arguments: [json-file|xml-file] [asc|desc]");
         }
-        
+
         ordering = SortOrder.valueOf(args[1]);
 
         new Menu().readFile(args[0], args[1]);
@@ -30,14 +30,14 @@ public class Menu {
     public void readFile(String fileName, String sortOrder) throws IOException {
         MenuParser parser = getSuitableParser(fileName);
         String fileContents = FileUtils.readFileToString(new File(fileName));
-        PricerMenu menu = parser.parse(fileContents);
+        MyMenu menu = parser.parse(fileContents);
 
-        List<PricerFood> foodList = menu.getFood();
+        List<MyFood> foodList = menu.getFood();
         Collections.sort(foodList);
         if(ordering.equals(SortOrder.desc))
             Collections.reverse(foodList);
 
-        for(PricerFood pf : foodList) {
+        for(MyFood pf : foodList) {
             System.out.println(pf);
         }
     }

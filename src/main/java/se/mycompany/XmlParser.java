@@ -1,8 +1,8 @@
-package se.pricer;
+package se.mycompany;
 
-import se.pricer.foodmenu.model.PricerFood;
-import se.pricer.foodmenu.model.PricerMenu;
-import se.pricer.foodmenu.model.jaxb.BreakfastMenu;
+import se.mycompany.foodmenu.model.MyFood;
+import se.mycompany.foodmenu.model.MyMenu;
+import se.mycompany.foodmenu.model.jaxb.BreakfastMenu;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -19,9 +19,9 @@ import java.util.stream.Collectors;
  */
 public class XmlParser implements MenuParser {
     @Override
-    public PricerMenu parse(String fileContents) {
+    public MyMenu parse(String fileContents) {
         try {
-            JAXBContext jc = JAXBContext.newInstance("se.pricer.foodmenu.model.jaxb");
+            JAXBContext jc = JAXBContext.newInstance("se.mycompany.foodmenu.model.jaxb");
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             BreakfastMenu jaxbMenu = (BreakfastMenu) unmarshaller.unmarshal(new StreamSource(new StringReader(fileContents)));
             return mapJaxbMenuToDoaminObject(jaxbMenu);
@@ -30,11 +30,11 @@ public class XmlParser implements MenuParser {
         }
     }
 
-    private PricerMenu mapJaxbMenuToDoaminObject(BreakfastMenu jaxbMenu) {
+    private MyMenu mapJaxbMenuToDoaminObject(BreakfastMenu jaxbMenu) {
 
-        Function<BreakfastMenu.Food, PricerFood> mapFoodObject = new Function<BreakfastMenu.Food, PricerFood>() {
-            public PricerFood apply(BreakfastMenu.Food t) {
-                PricerFood food = new PricerFood();
+        Function<BreakfastMenu.Food, MyFood> mapFoodObject = new Function<BreakfastMenu.Food, MyFood>() {
+            public MyFood apply(BreakfastMenu.Food t) {
+                MyFood food = new MyFood();
                 food.name = t.getName();
                 food.description = t.getDescription();
                 food.calories = t.getCalories();
@@ -43,11 +43,11 @@ public class XmlParser implements MenuParser {
             }
         };
 
-        List<PricerFood> foodList = jaxbMenu.getFood().stream()
+        List<MyFood> foodList = jaxbMenu.getFood().stream()
                 .map(mapFoodObject)
-                .collect(Collectors.<PricerFood> toList());
+                .collect(Collectors.<MyFood> toList());
 
-        PricerMenu menu = new PricerMenu();
+        MyMenu menu = new MyMenu();
         menu.setFood(foodList);
         return menu;
     }

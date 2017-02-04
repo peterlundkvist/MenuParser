@@ -1,9 +1,9 @@
-package se.pricer.foodmenu.model;
+package se.mycompany.foodmenu.model;
 
 /**
  * Created by peter on 2017-02-03.
  */
-public class PricerFood implements Comparable {
+public class MyFood implements Comparable {
     public String name;
     public String price;
     public String description;
@@ -21,7 +21,7 @@ public class PricerFood implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        PricerFood pf = (PricerFood) o;
+        MyFood pf = (MyFood) o;
         return this.name.compareTo(pf.name);
     }
 }

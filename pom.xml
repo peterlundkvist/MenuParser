@@ -30,7 +30,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>se.pricer.Menu</mainClass>
+                            <mainClass>se.mycompany.Menu</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -58,7 +58,7 @@
                 </executions>
                 <configuration>
                     <!-- The package of your generated sources -->
-                    <packageName>se.pricer.foodmenu.model.jaxb</packageName>
+                    <packageName>se.mycompany.foodmenu.model.jaxb</packageName>
                 </configuration>
             </plugin>
         </plugins>

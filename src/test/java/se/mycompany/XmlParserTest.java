@@ -1,8 +1,7 @@
-package se.pricer;
+package se.mycompany;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import se.pricer.foodmenu.model.PricerMenu;
+import se.mycompany.foodmenu.model.MyMenu;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,7 +19,7 @@ public class XmlParserTest {
     public void parseXmlFile() throws URISyntaxException, IOException {
         String fileContents = new String(Files.readAllBytes(Paths.get(getClass().getResource("/menu.xml").toURI())));
         MenuParser menuParser = new XmlParser();
-        PricerMenu breakfastMenu = menuParser.parse(fileContents);
+        MyMenu breakfastMenu = menuParser.parse(fileContents);
         assertEquals(5, breakfastMenu.getFood().size());
     }
 }

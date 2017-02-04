@@ -1,7 +1,7 @@
-package se.pricer;
+package se.mycompany;
 
 import org.junit.Test;
-import se.pricer.foodmenu.model.PricerMenu;
+import se.mycompany.foodmenu.model.MyMenu;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,7 +20,7 @@ public class JsonParserTest {
     public void parseJsonFile() throws URISyntaxException, IOException {
         String fileContents = new String(Files.readAllBytes(Paths.get(getClass().getResource("/menu.json").toURI())));
         MenuParser menuParser = new JsonParser();
-        PricerMenu breakfastMenu = menuParser.parse(fileContents);
+        MyMenu breakfastMenu = menuParser.parse(fileContents);
         assertEquals(5, breakfastMenu.getFood().size());
     }
 }
